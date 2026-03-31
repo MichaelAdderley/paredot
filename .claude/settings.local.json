@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__figma-remote__get_design_context",
+      "mcp__figma-remote__get_screenshot",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__figma-remote__generate_figma_design",
+      "Bash(open \"http://localhost:56798/#figmacapture=3610d422-d1af-475d-b6a8-de9f2d4f6def&figmaendpoint=https%3A%2F%2Fmcp.figma.com%2Fmcp%2Fcapture%2F3610d422-d1af-475d-b6a8-de9f2d4f6def%2Fsubmit&figmadelay=1000\")",
+      "Bash(gh auth:*)",
+      "Bash(gh api:*)"
+    ]
+  }
+}
