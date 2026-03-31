@@ -122,6 +122,10 @@
       background: #ffffff;
     }
 
+    .grid-dot.empty {
+      pointer-events: none;
+    }
+
     .grid-dot.empty::after {
       background: transparent;
     }
@@ -288,6 +292,34 @@
       cursor: pointer;
     }
 
+    /* Tooltip */
+    .tooltip {
+      position: fixed;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 50;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+
+    .tooltip.visible {
+      opacity: 1;
+    }
+
+    .tooltip .tooltip-task {
+      color: #999;
+      font-size: 12px;
+      display: block;
+    }
+
     /* Toast */
     .toast {
       position: fixed;
@@ -427,6 +459,9 @@
     </div>
   </div>
 
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip"></div>
+
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
@@ -525,17 +560,63 @@
         dot.className = 'grid-dot';
         if (i >= daysInYear) {
           dot.classList.add('empty');
-        } else if (taskDays.has(i)) {
-          dot.classList.add('has-task');
+        } else {
           dot.dataset.dayIndex = i;
-        } else if (i < dayOfYear) {
-          dot.classList.add('past');
+          if (taskDays.has(i)) {
+            dot.classList.add('has-task');
+          } else if (i < dayOfYear) {
+            dot.classList.add('past');
+          }
         }
         grid.appendChild(dot);
       }
     }
 
     renderGrid();
+
+    // Tooltip logic
+    const tooltip = document.getElementById('tooltip');
+
+    function formatDayIndex(dayIndex) {
+      const date = new Date(year, 0, dayIndex + 1);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    function getTaskForDay(dayIndex) {
+      const taskDayMap = getTaskDayMap();
+      const taskIndices = taskDayMap[dayIndex];
+      if (taskIndices && taskIndices.length > 0) {
+        return tasks[taskIndices[0]].title;
+      }
+      return null;
+    }
+
+    grid.addEventListener('mouseover', (e) => {
+      const dot = e.target.closest('.grid-dot:not(.empty)');
+      if (!dot || dot.dataset.dayIndex == null) {
+        tooltip.classList.remove('visible');
+        return;
+      }
+      const dayIndex = parseInt(dot.dataset.dayIndex);
+      const dateLabel = formatDayIndex(dayIndex);
+      const taskTitle = getTaskForDay(dayIndex);
+
+      if (taskTitle) {
+        tooltip.innerHTML = `${dateLabel}<span class="tooltip-task">${taskTitle}</span>`;
+      } else {
+        tooltip.textContent = dateLabel;
+      }
+      tooltip.classList.add('visible');
+    });
+
+    grid.addEventListener('mousemove', (e) => {
+      tooltip.style.left = e.clientX + 12 + 'px';
+      tooltip.style.top = e.clientY - 12 + 'px';
+    });
+
+    grid.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('visible');
+    });
 
     // Modal logic
     const modalOverlay = document.getElementById('modal-overlay');
