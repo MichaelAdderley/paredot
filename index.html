@@ -139,11 +139,11 @@
       background: #ccc;
     }
 
-    .grid-dot.has-task::after {
+    .grid-dot.has-milestone::after {
       background: var(--accent, #4ade80);
     }
 
-    .grid-dot.has-task:hover::after {
+    .grid-dot.has-milestone:hover::after {
       filter: brightness(0.85);
       background: var(--accent, #4ade80);
     }
@@ -167,8 +167,8 @@
       background: #1e1e1e;
       border: 1px solid #2a2a2a;
       border-radius: 16px;
-      padding: 32px;
-      width: 360px;
+      padding: 36px;
+      width: 440px;
     }
 
     .modal h2 {
@@ -193,10 +193,10 @@
 
     .modal-field input {
       width: 100%;
-      padding: 10px 14px;
+      padding: 12px 16px;
       background: #151313;
       border: 1px solid #2a2a2a;
-      border-radius: 8px;
+      border-radius: 10px;
       color: #fff;
       font-size: 15px;
       font-family: inherit;
@@ -211,14 +211,14 @@
 
     .modal-actions {
       display: flex;
-      gap: 10px;
-      margin-top: 24px;
+      gap: 12px;
+      margin-top: 28px;
     }
 
     .modal-actions button {
       flex: 1;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 10px;
       font-size: 14px;
       font-weight: 500;
       font-family: inherit;
@@ -236,12 +236,12 @@
       background: #333;
     }
 
-    .btn-add-task {
+    .btn-add-milestone {
       background: var(--accent, #4ade80);
       color: #151313;
     }
 
-    .btn-add-task:hover {
+    .btn-add-milestone:hover {
       filter: brightness(0.85);
     }
 
@@ -253,6 +253,161 @@
       color: #ef4444;
       font-size: 12px;
       margin-top: 6px;
+    }
+
+    /* Calendar */
+    .calendar {
+      width: 100%;
+      background: #151313;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 18px;
+      transition: border-color 0.2s;
+    }
+
+    .calendar.error {
+      border-color: #ef4444;
+    }
+
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .calendar-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .cal-nav {
+      width: 28px;
+      height: 28px;
+      background: none;
+      border: none;
+      color: #5c5c5c;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      padding: 0;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .cal-nav:hover {
+      color: #fff;
+      background: #2a2a2a;
+    }
+
+    .cal-nav svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 6px;
+    }
+
+    .calendar-weekdays span {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: #5c5c5c;
+      letter-spacing: 0.5px;
+      padding: 6px 0;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 400;
+      background: none;
+      border: 1px solid transparent;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .cal-day:hover:not(.cal-day-selected) {
+      background: #2a2a2a;
+    }
+
+    .cal-day.cal-day-other-month {
+      color: #3a3a3a;
+    }
+
+    .cal-day.cal-day-today {
+      border-color: var(--accent, #4ade80);
+    }
+
+    .cal-day.cal-day-selected {
+      background: var(--accent, #4ade80);
+      color: #151313;
+      font-weight: 500;
+      border-color: var(--accent, #4ade80);
+    }
+
+    .cal-day.cal-day-selected:hover {
+      filter: brightness(0.9);
+    }
+
+    .cal-day.cal-day-disabled {
+      color: #2a2a2a;
+      cursor: not-allowed;
+    }
+
+    .cal-day.cal-day-disabled:hover {
+      background: none;
+    }
+
+    /* Settings calendar (compact) */
+    .calendar.calendar-compact {
+      padding: 12px;
+    }
+
+    .calendar.calendar-compact .calendar-header {
+      margin-bottom: 8px;
+    }
+
+    .calendar.calendar-compact .calendar-title {
+      font-size: 12px;
+    }
+
+    .calendar.calendar-compact .calendar-weekdays span {
+      font-size: 10px;
+      padding: 4px 0;
+    }
+
+    .calendar.calendar-compact .cal-day {
+      font-size: 12px;
+    }
+
+    .calendar.calendar-compact .cal-nav {
+      width: 24px;
+      height: 24px;
+    }
+
+    .calendar.calendar-compact .cal-nav svg {
+      width: 14px;
+      height: 14px;
     }
 
     .modal {
@@ -289,7 +444,7 @@
       height: 18px;
     }
 
-    .grid-dot.has-task {
+    .grid-dot.has-milestone {
       cursor: pointer;
     }
 
@@ -315,7 +470,7 @@
       opacity: 1;
     }
 
-    .tooltip .tooltip-task {
+    .tooltip .tooltip-milestone {
       color: #999;
       font-size: 12px;
       display: block;
@@ -354,6 +509,8 @@
       align-items: center;
       justify-content: center;
       z-index: 100;
+      overflow-y: auto;
+      padding: 32px 0;
     }
 
     .settings-overlay.open {
@@ -366,6 +523,7 @@
       border-radius: 16px;
       padding: 32px;
       width: 360px;
+      margin: auto;
     }
 
     .settings-panel h2 {
@@ -439,7 +597,7 @@
         <span class="header-date" id="today-date"></span>
       </div>
       <div class="header-actions">
-        <button id="btn-add" aria-label="Add task">
+        <button id="btn-add" aria-label="Add milestone">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
             <path d="M8 12h8"/>
@@ -474,25 +632,61 @@
         <label>Board title</label>
         <input type="text" id="settings-board-title" placeholder="Enter a title">
       </div>
-      <p class="settings-label">Task dot color</p>
+      <p class="settings-label">Year start date</p>
+      <div class="calendar calendar-compact" id="settings-calendar">
+        <div class="calendar-header">
+          <button type="button" class="cal-nav" id="settings-cal-prev" aria-label="Previous month">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          <span class="calendar-title" id="settings-calendar-title"></span>
+          <button type="button" class="cal-nav" id="settings-cal-next" aria-label="Next month">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+        <div class="calendar-days" id="settings-calendar-days"></div>
+      </div>
+      <p class="settings-label" style="margin-top: 24px;">Milestone dot color</p>
       <div class="color-options" id="color-options"></div>
       <button class="settings-done" id="settings-done">Done</button>
     </div>
   </div>
 
-  <!-- Task Modal -->
+  <!-- Milestone Modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal">
-      <h2 id="modal-title">Add Task</h2>
+      <h2 id="modal-title">Add Milestone</h2>
       <div class="modal-field">
-        <label>Title</label>
-        <input type="text" id="task-title" placeholder="What needs to be done?">
+        <input type="text" id="milestone-title" placeholder="e.g. birthday, vacation, concert...">
       </div>
       <div class="modal-field">
-        <label>Date</label>
-        <input type="date" id="task-date">
+        <div class="calendar" id="calendar">
+          <div class="calendar-header">
+            <button type="button" class="cal-nav" id="cal-prev" aria-label="Previous month">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+            <span class="calendar-title" id="calendar-title"></span>
+            <button type="button" class="cal-nav" id="cal-next" aria-label="Next month">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+          </div>
+          <div class="calendar-days" id="calendar-days"></div>
+        </div>
       </div>
-      <button class="btn-delete" id="btn-delete" aria-label="Delete task">
+      <button class="btn-delete" id="btn-delete" aria-label="Delete milestone">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 6h18"/>
           <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
@@ -503,51 +697,93 @@
       </button>
       <div class="modal-actions">
         <button class="btn-cancel" id="btn-cancel">Cancel</button>
-        <button class="btn-add-task" id="btn-save">Add</button>
+        <button class="btn-add-milestone" id="btn-save">Add</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Set today's date
+    // Today (date will be set after we compute the year range)
     const today = new Date();
-    document.getElementById('today-date').textContent = 'Today is ' + today.toLocaleDateString('en-US', {
-      month: 'long', day: 'numeric', year: 'numeric'
-    });
+    const headerDateEl = document.getElementById('today-date');
 
-    // Generate 24x16 grid representing the calendar year
-    const grid = document.getElementById('grid');
-    const year = today.getFullYear();
-    const startOfYear = new Date(year, 0, 1);
-    const daysInYear = ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) ? 366 : 365;
-    const dayOfYear = Math.floor((today - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
-    const totalCells = 24 * 16;
-
-    // Load tasks from localStorage
-    let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-
-    // Get set of day indices that have tasks
-    function getTaskDays() {
-      const taskDays = new Set();
-      tasks.forEach(task => {
-        const taskDate = new Date(task.date + 'T00:00:00');
-        if (taskDate.getFullYear() === year) {
-          const dayIndex = Math.floor((taskDate - startOfYear) / (1000 * 60 * 60 * 24));
-          taskDays.add(dayIndex);
-        }
-      });
-      return taskDays;
+    function updateHeaderDate() {
+      const opts = { month: 'long', day: 'numeric', year: 'numeric' };
+      const lastDay = new Date(endDate.getTime() - DAY_MS);
+      const startStr = startDate.toLocaleDateString('en-US', opts);
+      const endStr = lastDay.toLocaleDateString('en-US', opts);
+      headerDateEl.textContent = `${startStr} - ${endStr}`;
     }
 
-    // Build a map of dayIndex -> array of task indices for click lookups
-    function getTaskDayMap() {
+    // Date helpers
+    const DAY_MS = 1000 * 60 * 60 * 24;
+
+    function formatDateString(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function parseDateString(str) {
+      return new Date(str + 'T00:00:00');
+    }
+
+    // Migrate legacy localStorage key (pre-rename) to 'milestones' for existing users
+    const LEGACY_KEY = 'ta' + 'sks';
+    if (localStorage.getItem(LEGACY_KEY) !== null && localStorage.getItem('milestones') === null) {
+      localStorage.setItem('milestones', localStorage.getItem(LEGACY_KEY));
+      localStorage.removeItem(LEGACY_KEY);
+    }
+
+    // Generate 24x16 grid representing a 365-day year
+    const grid = document.getElementById('grid');
+    const daysInYear = 365;
+    const totalCells = 24 * 16;
+
+    // Year window state (configurable start date)
+    let startDateStr = localStorage.getItem('startDate')
+      || formatDateString(new Date(today.getFullYear(), 0, 1));
+    let startDate, endDate, daysFromStartToToday;
+
+    function recomputeYearWindow() {
+      startDate = parseDateString(startDateStr);
+      endDate = new Date(startDate.getTime() + daysInYear * DAY_MS);
+      daysFromStartToToday = Math.floor((today - startDate) / DAY_MS);
+    }
+    recomputeYearWindow();
+    updateHeaderDate();
+
+    function dayIndexForDate(dateStr) {
+      const d = parseDateString(dateStr);
+      return Math.floor((d - startDate) / DAY_MS);
+    }
+
+    function dateForDayIndex(dayIndex) {
+      return new Date(startDate.getTime() + dayIndex * DAY_MS);
+    }
+
+    // Load milestones from localStorage
+    let milestones = JSON.parse(localStorage.getItem('milestones') || '[]');
+
+    // Get set of day indices that have milestones (within the year window)
+    function getMilestoneDays() {
+      const milestoneDays = new Set();
+      milestones.forEach(milestone => {
+        const idx = dayIndexForDate(milestone.date);
+        if (idx >= 0 && idx < daysInYear) milestoneDays.add(idx);
+      });
+      return milestoneDays;
+    }
+
+    // Build a map of dayIndex -> array of milestone indices for click lookups
+    function getMilestoneDayMap() {
       const map = {};
-      tasks.forEach((task, idx) => {
-        const taskDate = new Date(task.date + 'T00:00:00');
-        if (taskDate.getFullYear() === year) {
-          const dayIndex = Math.floor((taskDate - startOfYear) / (1000 * 60 * 60 * 24));
-          if (!map[dayIndex]) map[dayIndex] = [];
-          map[dayIndex].push(idx);
+      milestones.forEach((milestone, idx) => {
+        const dayIdx = dayIndexForDate(milestone.date);
+        if (dayIdx >= 0 && dayIdx < daysInYear) {
+          if (!map[dayIdx]) map[dayIdx] = [];
+          map[dayIdx].push(idx);
         }
       });
       return map;
@@ -555,7 +791,7 @@
 
     function renderGrid() {
       grid.innerHTML = '';
-      const taskDays = getTaskDays();
+      const milestoneDays = getMilestoneDays();
       for (let i = 0; i < totalCells; i++) {
         const dot = document.createElement('div');
         dot.className = 'grid-dot';
@@ -563,9 +799,9 @@
           dot.classList.add('empty');
         } else {
           dot.dataset.dayIndex = i;
-          if (taskDays.has(i)) {
-            dot.classList.add('has-task');
-          } else if (i < dayOfYear) {
+          if (milestoneDays.has(i)) {
+            dot.classList.add('has-milestone');
+          } else if (i < daysFromStartToToday) {
             dot.classList.add('past');
           }
         }
@@ -579,15 +815,15 @@
     const tooltip = document.getElementById('tooltip');
 
     function formatDayIndex(dayIndex) {
-      const date = new Date(year, 0, dayIndex + 1);
+      const date = dateForDayIndex(dayIndex);
       return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     }
 
-    function getTaskForDay(dayIndex) {
-      const taskDayMap = getTaskDayMap();
-      const taskIndices = taskDayMap[dayIndex];
-      if (taskIndices && taskIndices.length > 0) {
-        return tasks[taskIndices[0]].title;
+    function getMilestoneForDay(dayIndex) {
+      const milestoneDayMap = getMilestoneDayMap();
+      const milestoneIndices = milestoneDayMap[dayIndex];
+      if (milestoneIndices && milestoneIndices.length > 0) {
+        return milestones[milestoneIndices[0]].title;
       }
       return null;
     }
@@ -600,10 +836,10 @@
       }
       const dayIndex = parseInt(dot.dataset.dayIndex);
       const dateLabel = formatDayIndex(dayIndex);
-      const taskTitle = getTaskForDay(dayIndex);
+      const milestoneTitle = getMilestoneForDay(dayIndex);
 
-      if (taskTitle) {
-        tooltip.innerHTML = `${dateLabel}<span class="tooltip-task">${taskTitle}</span>`;
+      if (milestoneTitle) {
+        tooltip.innerHTML = `${dateLabel}<span class="tooltip-milestone">${milestoneTitle}</span>`;
       } else {
         tooltip.textContent = dateLabel;
       }
@@ -622,14 +858,118 @@
     // Modal logic
     const modalOverlay = document.getElementById('modal-overlay');
     const modalTitleEl = document.getElementById('modal-title');
-    const taskTitleInput = document.getElementById('task-title');
-    const taskDateInput = document.getElementById('task-date');
+    const milestoneTitleInput = document.getElementById('milestone-title');
     const btnSave = document.getElementById('btn-save');
     const btnCancel = document.getElementById('btn-cancel');
     const btnDelete = document.getElementById('btn-delete');
 
-    const MAX_TASKS = 4;
-    let editingTaskIndex = null;
+    // Reusable calendar factory
+    function makeCalendar(opts) {
+      // opts: { rootEl, daysEl, titleEl, prevBtn, nextBtn, getSelectedDate,
+      //        setSelectedDate, getMinDate, getMaxDate }
+      let viewYear = today.getFullYear();
+      let viewMonth = today.getMonth();
+
+      function setView(date) {
+        viewYear = date.getFullYear();
+        viewMonth = date.getMonth();
+      }
+
+      function navigate(delta) {
+        viewMonth += delta;
+        if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+        else if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+        render();
+      }
+
+      function render() {
+        const monthStart = new Date(viewYear, viewMonth, 1);
+        const startDayOfWeek = monthStart.getDay();
+        const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+        const daysInPrevMonth = new Date(viewYear, viewMonth, 0).getDate();
+        const todayStr = formatDateString(today);
+        const selected = opts.getSelectedDate();
+        const minDate = opts.getMinDate ? opts.getMinDate() : null;
+        const maxDate = opts.getMaxDate ? opts.getMaxDate() : null;
+
+        opts.titleEl.textContent = monthStart.toLocaleDateString('en-US', {
+          month: 'long', year: 'numeric'
+        });
+
+        opts.daysEl.innerHTML = '';
+        for (let i = 0; i < 42; i++) {
+          const dayBtn = document.createElement('button');
+          dayBtn.type = 'button';
+          dayBtn.className = 'cal-day';
+
+          let dayNumber, dayDate;
+          if (i < startDayOfWeek) {
+            dayNumber = daysInPrevMonth - startDayOfWeek + i + 1;
+            dayDate = new Date(viewYear, viewMonth - 1, dayNumber);
+            dayBtn.classList.add('cal-day-other-month');
+          } else if (i >= startDayOfWeek + daysInMonth) {
+            dayNumber = i - startDayOfWeek - daysInMonth + 1;
+            dayDate = new Date(viewYear, viewMonth + 1, dayNumber);
+            dayBtn.classList.add('cal-day-other-month');
+          } else {
+            dayNumber = i - startDayOfWeek + 1;
+            dayDate = new Date(viewYear, viewMonth, dayNumber);
+          }
+
+          const dateStr = formatDateString(dayDate);
+          dayBtn.dataset.date = dateStr;
+          dayBtn.textContent = dayNumber;
+
+          if (dateStr === todayStr) dayBtn.classList.add('cal-day-today');
+          if (dateStr === selected) dayBtn.classList.add('cal-day-selected');
+          if ((minDate && dayDate < minDate) || (maxDate && dayDate >= maxDate)) {
+            dayBtn.classList.add('cal-day-disabled');
+          }
+
+          opts.daysEl.appendChild(dayBtn);
+        }
+      }
+
+      opts.daysEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cal-day');
+        if (!btn || btn.classList.contains('cal-day-disabled')) return;
+        opts.setSelectedDate(btn.dataset.date);
+        setView(parseDateString(btn.dataset.date));
+        opts.rootEl.classList.remove('error');
+        const errMsg = opts.rootEl.parentElement.querySelector('.error-msg');
+        if (errMsg) errMsg.remove();
+        render();
+      });
+
+      opts.prevBtn.addEventListener('click', () => navigate(-1));
+      opts.nextBtn.addEventListener('click', () => navigate(1));
+
+      return {
+        focusDate(dateStr) {
+          setView(parseDateString(dateStr));
+          render();
+        },
+        render
+      };
+    }
+
+    // Milestone modal calendar
+    const calendarEl = document.getElementById('calendar');
+    let selectedDate = formatDateString(today);
+    const milestoneCalendar = makeCalendar({
+      rootEl: calendarEl,
+      daysEl: document.getElementById('calendar-days'),
+      titleEl: document.getElementById('calendar-title'),
+      prevBtn: document.getElementById('cal-prev'),
+      nextBtn: document.getElementById('cal-next'),
+      getSelectedDate: () => selectedDate,
+      setSelectedDate: (d) => { selectedDate = d; },
+      getMinDate: () => startDate,
+      getMaxDate: () => endDate
+    });
+
+    const MAX_MILESTONES = 4;
+    let editingMilestoneIndex = null;
     let toastTimeout = null;
 
     function showToast(message) {
@@ -640,34 +980,43 @@
       toastTimeout = setTimeout(() => toast.classList.remove('visible'), 3000);
     }
 
-    function openModal(mode, taskIndex) {
-      if (mode === 'edit' && taskIndex != null) {
-        editingTaskIndex = taskIndex;
-        modalTitleEl.textContent = 'Edit Task';
+    function clampDateToYear(dateStr) {
+      const d = parseDateString(dateStr);
+      if (d < startDate) return formatDateString(startDate);
+      const lastDay = new Date(endDate.getTime() - DAY_MS);
+      if (d >= endDate) return formatDateString(lastDay);
+      return dateStr;
+    }
+
+    function openModal(mode, milestoneIndex) {
+      if (mode === 'edit' && milestoneIndex != null) {
+        editingMilestoneIndex = milestoneIndex;
+        modalTitleEl.textContent = 'Edit Milestone';
         btnSave.textContent = 'Save';
-        taskTitleInput.value = tasks[taskIndex].title;
-        taskDateInput.value = tasks[taskIndex].date;
+        milestoneTitleInput.value = milestones[milestoneIndex].title;
+        selectedDate = milestones[milestoneIndex].date;
         btnDelete.classList.add('visible');
       } else {
-        editingTaskIndex = null;
-        modalTitleEl.textContent = 'Add Task';
+        editingMilestoneIndex = null;
+        modalTitleEl.textContent = 'Add Milestone';
         btnSave.textContent = 'Add';
-        taskTitleInput.value = '';
-        taskDateInput.value = today.toISOString().split('T')[0];
+        milestoneTitleInput.value = '';
+        selectedDate = clampDateToYear(formatDateString(today));
         btnDelete.classList.remove('visible');
       }
+      milestoneCalendar.focusDate(selectedDate);
       modalOverlay.classList.add('open');
-      taskTitleInput.focus();
+      milestoneTitleInput.focus();
     }
 
     function closeModal() {
       modalOverlay.classList.remove('open');
-      editingTaskIndex = null;
+      editingMilestoneIndex = null;
     }
 
     document.getElementById('btn-add').addEventListener('click', () => {
-      if (tasks.length >= MAX_TASKS) {
-        showToast(`Task limit reached — you can only have ${MAX_TASKS} tasks`);
+      if (milestones.length >= MAX_MILESTONES) {
+        showToast(`Milestone limit reached — you can only have ${MAX_MILESTONES} milestones`);
         return;
       }
       openModal('add');
@@ -675,13 +1024,13 @@
 
     // Click green dots to edit
     grid.addEventListener('click', (e) => {
-      const dot = e.target.closest('.grid-dot.has-task');
+      const dot = e.target.closest('.grid-dot.has-milestone');
       if (!dot) return;
       const dayIndex = parseInt(dot.dataset.dayIndex);
-      const taskDayMap = getTaskDayMap();
-      const taskIndices = taskDayMap[dayIndex];
-      if (taskIndices && taskIndices.length > 0) {
-        openModal('edit', taskIndices[0]);
+      const milestoneDayMap = getMilestoneDayMap();
+      const milestoneIndices = milestoneDayMap[dayIndex];
+      if (milestoneIndices && milestoneIndices.length > 0) {
+        openModal('edit', milestoneIndices[0]);
       }
     });
 
@@ -692,58 +1041,57 @@
     });
 
     function clearErrors() {
-      taskTitleInput.classList.remove('error');
-      taskDateInput.classList.remove('error');
+      milestoneTitleInput.classList.remove('error');
+      calendarEl.classList.remove('error');
       document.querySelectorAll('.modal .error-msg').forEach(el => el.remove());
     }
 
-    function showError(input, message) {
-      input.classList.add('error');
+    function showError(target, message) {
+      target.classList.add('error');
       const msg = document.createElement('div');
       msg.className = 'error-msg';
       msg.textContent = message;
-      input.parentElement.appendChild(msg);
+      target.parentElement.appendChild(msg);
     }
 
-    taskTitleInput.addEventListener('input', clearErrors);
-    taskDateInput.addEventListener('input', clearErrors);
+    milestoneTitleInput.addEventListener('input', clearErrors);
 
     btnSave.addEventListener('click', () => {
       clearErrors();
-      const title = taskTitleInput.value.trim();
-      const date = taskDateInput.value;
+      const title = milestoneTitleInput.value.trim();
+      const date = selectedDate;
       let hasError = false;
 
       if (!title) {
-        showError(taskTitleInput, 'Please enter a title');
+        showError(milestoneTitleInput, 'Please enter a title');
         hasError = true;
       }
       if (!date) {
-        showError(taskDateInput, 'Please enter a valid date');
+        showError(calendarEl, 'Please pick a date');
         hasError = true;
       }
       if (hasError) return;
 
-      if (editingTaskIndex != null) {
-        tasks[editingTaskIndex] = { title, date };
+      if (editingMilestoneIndex != null) {
+        milestones[editingMilestoneIndex] = { title, date };
       } else {
-        tasks.push({ title, date });
+        milestones.push({ title, date });
       }
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+      localStorage.setItem('milestones', JSON.stringify(milestones));
       renderGrid();
       closeModal();
     });
 
     btnDelete.addEventListener('click', () => {
-      if (editingTaskIndex != null) {
-        tasks.splice(editingTaskIndex, 1);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+      if (editingMilestoneIndex != null) {
+        milestones.splice(editingMilestoneIndex, 1);
+        localStorage.setItem('milestones', JSON.stringify(milestones));
         renderGrid();
         closeModal();
       }
     });
 
-    taskTitleInput.addEventListener('keydown', (e) => {
+    milestoneTitleInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') btnSave.click();
     });
 
@@ -772,11 +1120,13 @@
     // Pending settings state (not yet saved)
     let pendingAccent = null;
     let pendingTitle = null;
+    let pendingStartDate = null;
 
     function hasSettingsChanged() {
       const titleChanged = settingsBoardTitle.value.trim() !== boardTitle;
       const colorChanged = pendingAccent !== null && pendingAccent !== currentAccent;
-      return titleChanged || colorChanged;
+      const startChanged = pendingStartDate !== null && pendingStartDate !== startDateStr;
+      return titleChanged || colorChanged || startChanged;
     }
 
     function updateDoneButton() {
@@ -800,11 +1150,24 @@
       });
     }
 
+    // Settings start-date calendar
+    const settingsCalendar = makeCalendar({
+      rootEl: document.getElementById('settings-calendar'),
+      daysEl: document.getElementById('settings-calendar-days'),
+      titleEl: document.getElementById('settings-calendar-title'),
+      prevBtn: document.getElementById('settings-cal-prev'),
+      nextBtn: document.getElementById('settings-cal-next'),
+      getSelectedDate: () => pendingStartDate || startDateStr,
+      setSelectedDate: (d) => { pendingStartDate = d; updateDoneButton(); }
+    });
+
     function openSettings() {
       pendingAccent = null;
       pendingTitle = null;
+      pendingStartDate = null;
       settingsBoardTitle.value = boardTitle;
       renderColorOptions();
+      settingsCalendar.focusDate(startDateStr);
       settingsDone.disabled = true;
       settingsOverlay.classList.add('open');
     }
@@ -813,6 +1176,7 @@
       settingsOverlay.classList.remove('open');
       pendingAccent = null;
       pendingTitle = null;
+      pendingStartDate = null;
     }
 
     document.getElementById('btn-settings').addEventListener('click', openSettings);
@@ -835,6 +1199,15 @@
         currentAccent = pendingAccent;
         localStorage.setItem('accentColor', currentAccent);
         document.documentElement.style.setProperty('--accent', currentAccent);
+      }
+
+      // Save start date
+      if (pendingStartDate && pendingStartDate !== startDateStr) {
+        startDateStr = pendingStartDate;
+        localStorage.setItem('startDate', startDateStr);
+        recomputeYearWindow();
+        updateHeaderDate();
+        renderGrid();
       }
 
       closeSettings();
